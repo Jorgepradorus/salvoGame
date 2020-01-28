@@ -1,0 +1,36 @@
+.grid-container {
+    margin-right: 2rem;
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    grid-auto-columns: 30px;
+    width: 60%;
+}
+
+.grid-container > div {
+    font-size: 30px;
+    border: 1px solid black;
+    text-align: center;
+}
+
+.positionship{
+    background-color: grey;
+}
+
+.positionSalvosPlayer2Hit{
+    background-color: red;
+}
+
+.positionSalvosPlayer2Miss{
+    background-color: blue;
+}
+
+.positionSalvosPlayer1{
+    background-color: yellow;
+}
+
+
+.bothGridContainer {
+    display: flex;
+
+}
+
