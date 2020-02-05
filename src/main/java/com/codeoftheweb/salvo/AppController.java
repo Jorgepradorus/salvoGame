@@ -34,6 +34,22 @@ public class AppController {
         return dto;
     }
 
+    @Autowired
+    private GameRepository gameRepository2;
+    @GetMapping("/games2")
+
+    public List getGames2() {
+        return gameRepository2.findAll().stream().map(Game -> makeGameDTO2(Game)).collect(Collectors.toList());
+    }
+
+    private Map<String, Object> makeGameDTO2(Game game) {
+        Map<String, Object> dto = new LinkedHashMap<String, Object>();
+        dto.put("id", game.getGame_Id());
+        dto.put("date", game.getCreationDate());
+        dto.put("gamePlayer", game.getGamePlayers().stream().map(gp -> gp.toDTOGameView()));
+        return dto;
+    }
+
 
     @Autowired
     private PlayerRepository playerRepository;
@@ -49,6 +65,7 @@ public class AppController {
         dto.put("player_id", player.getPlayer_Id());
         dto.put("userName", player.getUserName());
         dto.put("email", player.getEmail());
+        dto.put("score", player.getScore());
         return dto;
     }
 
@@ -106,10 +123,11 @@ public class AppController {
                 put("playerEmail", gp.getPlayer().getEmail());
                 put("salvos", gp.getSalvo());
             }}));
-            //put("salvoes", game.getGamePlayers().stream().findAny().get().getSalvo());
+
 
 
         }}).collect(Collectors.toList());
 
     }
+
 }

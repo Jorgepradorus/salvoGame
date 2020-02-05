@@ -23,6 +23,9 @@ public class Game {
     @OneToMany(mappedBy = "game", fetch = FetchType.EAGER)
     Set<GamePlayer> gamePlayers = new HashSet<>();
 
+    @OneToMany(mappedBy = "game", fetch = FetchType.EAGER)
+    Set<Score> score = new HashSet<>();
+
     public void addGamePlayer(GamePlayer gamePlayer) {
         gamePlayers.add(gamePlayer);
     }
@@ -55,6 +58,8 @@ public class Game {
     public Optional<GamePlayer> gamePlayerExist (long gameplayerId){
         return gamePlayers.stream().filter(gp -> gp.getId() == gameplayerId).findAny();
     }
+
+    public Set<Score> getScore(){ return score; }
 
 
     @Override
